@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+﻿import { useLayoutEffect, useRef } from "react";
 
 import { HeroCtaLeafWing } from "@/components/sections/HeroCtaLeafWing";
 import { featuresStackCards } from "@/lib/content";
@@ -42,7 +42,7 @@ export function Wrapper() {
         <div className="mx-auto mb-16 max-w-3xl text-center md:mb-20">
           <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-5">
             <HeroCtaLeafWing side="right" className="h-9 sm:h-11 md:h-12" />
-            <h2 className="heading-section font-hero text-navy">
+            <h2 className="heading-section font-ploni font-extrabold text-navy">
               <span className="block">למה לבחור</span>
               <span className="block">בבית ספר של מיה?</span>
             </h2>
@@ -60,7 +60,7 @@ export function Wrapper() {
                 style={{ top: `${100 + index * 24}px` }}
                 className="sticky min-w-0 flex-1 overflow-hidden rounded-3xl border border-line bg-gradient-to-b from-white to-cream/60 p-7 text-center shadow-lift will-change-transform sm:p-10"
               >
-                <h3 className="mx-auto mb-4 max-w-full font-body text-lg font-light leading-snug text-balance text-navy sm:text-xl md:text-2xl">
+                <h3 className="mx-auto mb-4 max-w-full font-ploni text-lg font-light leading-snug text-balance text-navy sm:text-xl md:text-2xl">
                   {item.title}
                 </h3>
 
@@ -71,7 +71,7 @@ export function Wrapper() {
 
               <span
                 aria-hidden="true"
-                className="font-amatica shrink-0 select-none pt-2 text-[80px] font-normal leading-none text-teal/70 sm:pt-4 sm:text-[100px] md:text-[120px]"
+                className="font-ploni font-extrabold shrink-0 select-none pt-2 text-[80px] font-normal leading-none text-teal/70 sm:pt-4 sm:text-[100px] md:text-[120px]"
               >
                 {item.number}
               </span>

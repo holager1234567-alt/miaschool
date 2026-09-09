@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef } from "react";
 
+import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { HeroLogo } from "@/components/sections/HeroLogo";
 import { SchoolIntroLeadParagraph } from "@/components/sections/SchoolIntroLeadParagraph";
-import { schoolIntroParagraphs } from "@/lib/content";
+import { salesCopy, schoolIntroParagraphs } from "@/lib/content";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 export function SchoolIntro() {
@@ -31,7 +32,7 @@ export function SchoolIntro() {
   }, []);
 
   return (
-    <section ref={ref} className="-mt-1 bg-white px-4 pt-0 pb-8 text-black sm:px-6 sm:pb-10 md:pb-12">
+    <section ref={ref} className="-mt-1 bg-transparent px-4 pt-0 pb-4 text-black sm:px-6 sm:pb-5 md:pb-6">
       <div className="container-page mx-auto max-w-3xl text-center">
         <div data-school-intro-fade>
           <HeroLogo />
@@ -52,6 +53,17 @@ export function SchoolIntro() {
               {paragraph}
             </p>
           ))}
+        </div>
+
+        <div
+          data-school-intro-fade
+          className="mx-auto mt-6 flex justify-center px-2 sm:mt-8 md:mt-10"
+        >
+          <HeroCtaButton
+            variant="intro-gold"
+            label={salesCopy.hook.cta}
+            className="mx-auto"
+          />
         </div>
       </div>
     </section>

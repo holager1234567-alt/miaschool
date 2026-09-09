@@ -7,7 +7,7 @@ export function Footer() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
 
   return (
-    <footer className="border-t border-sage-soft/70 bg-white px-6">
+    <footer className="relative z-[1] border-t border-sage-soft/70 bg-transparent px-6">
       <div className="container-page flex flex-col items-center gap-5 py-8 text-center">
         <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] font-medium text-muted">
           <Link to="/accessibility" className="hover:text-pine">

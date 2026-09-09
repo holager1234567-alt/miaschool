@@ -23,7 +23,7 @@ export function TestimonialsMarquee({
 
   return (
     <div
-      className={`w-full pb-2 ${reducedMotion ? "overflow-x-auto" : "overflow-hidden"} ${className}`}
+      className={`relative z-20 w-full pb-2 ${reducedMotion ? "overflow-x-auto" : "overflow-hidden"} ${className}`}
       dir="ltr"
       aria-label={ariaLabel}
     >

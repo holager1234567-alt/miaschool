@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { whyChooseItems } from "@/lib/content";
 
 export function WhyChoose() {
@@ -8,10 +7,9 @@ export function WhyChoose() {
       id="why"
       className="relative scroll-mt-24 overflow-hidden bg-white px-6 py-14 text-pine md:py-20"
     >
-      <BotanicalBackdrop className="opacity-60" />
       <div className="container-page relative z-10 mx-auto max-w-3xl">
         <FadeIn className="mb-12 text-center md:mb-16">
-          <h2 className="heading-section font-hero text-pine">
+          <h2 className="heading-section font-ploni font-extrabold text-pine">
             למה לבחור בבית ספר של מיה?
           </h2>
         </FadeIn>
@@ -22,7 +20,7 @@ export function WhyChoose() {
               <article className="flex items-start gap-4 sm:gap-6">
                 <span
                   aria-hidden="true"
-                  className="font-amatica shrink-0 text-[clamp(56px,14vw,88px)] leading-none text-pine/75"
+                  className="font-ploni font-extrabold shrink-0 text-[clamp(56px,14vw,88px)] leading-none text-pine/75"
                 >
                   {item.number}
                 </span>

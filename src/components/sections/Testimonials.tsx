@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { stackTestimonials, testimonials } from "@/lib/content";
 
 function ScreenshotGallery() {
@@ -33,7 +33,7 @@ function EditorialQuotes() {
         >
           <span
             aria-hidden="true"
-            className="font-amatica pointer-events-none absolute -top-4 right-0 text-[56px] leading-none text-pine/15"
+            className="font-tachles pointer-events-none absolute -top-4 right-0 text-[56px] leading-none text-pine/15"
           >
             ״
           </span>
@@ -58,7 +58,7 @@ export function Testimonials() {
     >
       <div className="container-page">
         <FadeIn className="mx-auto mb-10 max-w-[760px] text-center md:mb-12">
-          <h2 className="heading-section font-hero text-pine">
+          <h2 className="heading-section font-ploni font-extrabold text-pine">
             כל שיעור הוא חוויה ומדרגה נוספת בפיתוח הביטחון וההצלחה
           </h2>
         </FadeIn>

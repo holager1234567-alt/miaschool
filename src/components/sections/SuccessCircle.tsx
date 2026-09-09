@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { successSteps } from "@/lib/content";
 
 export function SuccessCircle() {
@@ -8,10 +7,9 @@ export function SuccessCircle() {
       id="success"
       className="relative scroll-mt-24 overflow-hidden bg-white px-4 py-14 sm:px-6 md:py-20"
     >
-      <BotanicalBackdrop />
       <div className="container-page relative z-10 mx-auto max-w-5xl">
         <FadeIn className="mx-auto mb-12 max-w-[40ch] text-center md:mb-16">
-          <h2 className="heading-section font-hero text-pine">
+          <h2 className="heading-section font-ploni font-extrabold text-pine">
             תוך שמונה מפגשים היחס לשפה משתנה לחלוטין
           </h2>
           <p className="mt-4 text-[15px] leading-relaxed text-muted sm:text-lg">

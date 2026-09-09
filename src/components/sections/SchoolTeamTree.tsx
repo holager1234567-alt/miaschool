@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import {
   schoolTeamBranches,
   schoolTeamDirector,
@@ -107,7 +106,7 @@ function TeamMemberProfile({
       </p>
       <p
         className={cn(
-          "mt-2 leading-relaxed text-muted italic",
+          "font-tachles mt-2 leading-relaxed text-muted not-italic",
           featured
             ? "text-[12px] sm:text-[13px]"
             : compact
@@ -244,10 +243,9 @@ export function SchoolTeamTree() {
       id="team"
       className="relative scroll-mt-24 overflow-hidden bg-white px-4 py-16 sm:px-6 md:py-20"
     >
-      <BotanicalBackdrop className="opacity-80" />
       <div className="container-page relative z-10 mx-auto max-w-6xl">
         <FadeIn className="mx-auto mb-10 max-w-[760px] text-center md:mb-12">
-          <h2 className="heading-section font-hero text-pine">
+          <h2 className="heading-section font-ploni font-extrabold text-pine">
             עץ השורשים של בית הספר
           </h2>
           <p className="mt-4 text-muted">

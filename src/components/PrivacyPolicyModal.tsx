@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+﻿import { ExternalLink } from "lucide-react";
 
 import { HeroLogo } from "@/components/sections/HeroLogo";
 import { Button } from "@/components/ui/button";
@@ -57,7 +57,7 @@ export function PrivacyPolicyModal({
               <section key={section.title} aria-labelledby={`privacy-section-${index}`}>
                 <h2
                   id={`privacy-section-${index}`}
-                  className="mb-3 font-heading text-[18px] font-bold text-pine md:text-[20px]"
+                  className="mb-3 font-ploni font-bold text-[18px] font-bold text-pine md:text-[20px]"
                 >
                   {index + 1}. {section.title}
                 </h2>

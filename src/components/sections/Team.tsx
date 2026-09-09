@@ -49,7 +49,7 @@ export function Team() {
                 className="mx-auto size-28 rounded-full object-cover ring-4 ring-cream"
               />
               <h3 className="heading-card mt-4">{teacher.name}</h3>
-              <p className="mt-2 text-[15px] leading-[1.6] text-muted">
+              <p className="font-tachles mt-2 text-[15px] leading-relaxed text-muted">
                 ״{teacher.quote}״
               </p>
             </article>

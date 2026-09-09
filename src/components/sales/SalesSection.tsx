@@ -11,9 +11,9 @@ type SalesSectionProps = {
 };
 
 const toneClasses = {
-  linen: "bg-white text-pine",
-  forest: "bg-white text-pine",
-  sage: "bg-white text-pine",
+  linen: "bg-transparent text-pine",
+  forest: "bg-transparent text-pine",
+  sage: "bg-transparent text-pine",
 } as const;
 
 export function SalesSection({
@@ -27,7 +27,7 @@ export function SalesSection({
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 overflow-x-hidden px-6 py-14 md:py-20",
+        "scroll-mt-20 overflow-x-clip px-6 py-14 md:py-20",
         toneClasses[tone],
         className,
       )}

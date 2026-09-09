@@ -1,4 +1,4 @@
-import { Languages, Sparkles, Heart } from "lucide-react";
+﻿import { Languages, Sparkles, Heart } from "lucide-react";
 
 export function AboutMaya() {
   return (
@@ -38,7 +38,7 @@ export function AboutMaya() {
             ].map((item) => (
               <li key={item.label} className="rounded-[20px] bg-white p-4 shadow-soft">
                 <item.icon className="size-6 text-coral" strokeWidth={1.75} />
-                <p className="mt-3 font-heading text-[16px] font-bold text-navy">
+                <p className="mt-3 font-ploni font-bold text-[16px] font-bold text-navy">
                   {item.label}
                 </p>
                 <p className="mt-1 text-[13px] text-muted">{item.text}</p>

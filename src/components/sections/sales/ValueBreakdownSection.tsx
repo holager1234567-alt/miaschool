@@ -1,36 +1,14 @@
-import { useLayoutEffect, useRef, type RefObject } from "react";
+﻿import { motion, useReducedMotion } from "framer-motion";
+import type { RefObject } from "react";
 
 import { FadeIn } from "@/components/motion/FadeIn";
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
-import { CtaMicrocopy } from "@/components/sales/WhatsAppCta";
 import { salesCopy } from "@/lib/content";
-import { gsap, prefersReducedMotion, ScrollTrigger } from "@/lib/gsap";
 
-const STEPS_START = 0.14;
-const STEPS_END = 0.86;
 const SLIDE_OFFSET_PX = 72;
+const STEP_SLIDE_OFFSET_PX = 52;
+const stepEase = [0.22, 1, 0.36, 1] as const;
 const CTA_SLIDE_OFFSET_PX = 40;
-
-function clamp(value: number, min = 0, max = 1) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function stepLocalProgress(progress: number, index: number, total: number) {
-  const span = (STEPS_END - STEPS_START) / total;
-  const start = STEPS_START + index * span;
-  const end = start + span;
-
-  if (progress <= start) return 0;
-  if (progress >= end) return 1;
-  return (progress - start) / span;
-}
-
-function setWillChange(els: HTMLElement[], active: boolean) {
-  const value = active ? "opacity, transform" : "auto";
-  els.forEach((el) => {
-    el.style.willChange = value;
-  });
-}
 
 function isDocumentRtl() {
   return (
@@ -40,7 +18,7 @@ function isDocumentRtl() {
 }
 
 function slideOffsetPx() {
-  return isDocumentRtl() ? -SLIDE_OFFSET_PX : SLIDE_OFFSET_PX;
+  return isDocumentRtl() ? SLIDE_OFFSET_PX : -SLIDE_OFFSET_PX;
 }
 
 function ctaSlideOffsetPx() {
@@ -49,23 +27,103 @@ function ctaSlideOffsetPx() {
 
 type ValueItem = (typeof salesCopy.value.items)[number];
 
+function ValueCurveArrow({ placement }: { placement: "start" | "end" }) {
+  return (
+    <div
+      className={
+        placement === "start"
+          ? "value-curve-arrow-wrap value-curve-arrow-wrap--start"
+          : "value-curve-arrow-wrap value-curve-arrow-wrap--end"
+      }
+      aria-hidden="true"
+    >
+      <img
+        src="/images/value-curve-arrow.png?v=1"
+        alt=""
+        draggable={false}
+        className="value-curve-arrow pointer-events-none h-auto object-contain"
+      />
+    </div>
+  );
+}
+
 function ValueTitle({ lines }: { lines: readonly [string, string] }) {
   return (
-    <h2 className="value-section-title z-10 mx-auto w-full max-w-3xl shrink-0 text-center font-hero text-pine">
-      <span className="block">{lines[0]}</span>
-      <span className="mt-1 block sm:mt-1.5">{lines[1]}</span>
+    <h2 className="value-section-title z-10 mx-auto w-full max-w-3xl shrink-0 text-center font-ploni font-extrabold md:max-w-none">
+      <span>{lines[0]}</span>{" "}
+      <span>{lines[1]}</span>
     </h2>
+  );
+}
+
+function StepPuzzleIcon({ className = "" }: { className?: string }) {
+  return (
+    <img
+      src="/images/puzzle-pieces.png?v=1"
+      alt=""
+      aria-hidden="true"
+      draggable={false}
+      className={`pointer-events-none h-auto w-[18px] shrink-0 object-contain opacity-90 md:w-[20px] ${className}`}
+    />
   );
 }
 
 function ValueStep({
   item,
   scrollStep = false,
+  compact = false,
+  desktop = false,
 }: {
   item: ValueItem;
   scrollStep?: boolean;
+  compact?: boolean;
+  desktop?: boolean;
 }) {
   const offset = slideOffsetPx();
+
+  if (desktop) {
+    return (
+      <article className="value-step-desktop mx-auto flex w-full flex-col items-center text-center">
+        <div className="flex items-center justify-center gap-1.5">
+          <StepPuzzleIcon className="w-5" />
+          <span
+            aria-hidden="true"
+            className="process-step-number value-step-number-desktop font-ploni font-extrabold leading-none"
+          >
+            {item.number}
+          </span>
+        </div>
+        <h3 className="value-step-title-desktop mt-1.5">{item.title}</h3>
+        <p className="value-step-desc-desktop mt-1 text-black">{item.description}</p>
+      </article>
+    );
+  }
+
+  if (compact) {
+    return (
+      <article
+        data-scroll-step={scrollStep ? "" : undefined}
+        className="mx-auto flex w-full max-w-[24rem] flex-col items-center text-center sm:max-w-[28rem]"
+        style={
+          scrollStep
+            ? { opacity: 0, transform: `translate3d(${offset}px, 0, 0)` }
+            : undefined
+        }
+      >
+        <div className="flex items-center justify-center gap-1.5">
+          <StepPuzzleIcon />
+          <span
+            aria-hidden="true"
+            className="process-step-number value-step-number-compact font-ploni font-extrabold leading-none"
+          >
+            {item.number}
+          </span>
+        </div>
+        <h3 className="value-step-title-compact mt-1.5">{item.title}</h3>
+        <p className="value-step-desc-compact mt-1 text-black">{item.description}</p>
+      </article>
+    );
+  }
 
   return (
     <article
@@ -77,12 +135,15 @@ function ValueStep({
           : undefined
       }
     >
-      <span
-        aria-hidden="true"
-        className="process-step-number font-amatica shrink-0 text-[clamp(38px,10vw,60px)] leading-none"
-      >
-        {item.number}
-      </span>
+      <div className="flex shrink-0 items-center gap-1.5 pt-0.5">
+        <StepPuzzleIcon className="w-[16px] sm:w-[18px]" />
+        <span
+          aria-hidden="true"
+          className="process-step-number font-ploni font-extrabold text-[clamp(38px,10vw,60px)] leading-none"
+        >
+          {item.number}
+        </span>
+      </div>
       <div className="min-w-0 flex-1 pt-0.5 text-center">
         <h3 className="process-step-title">{item.title}</h3>
         <p className="process-step-description mt-1 text-black">{item.description}</p>
@@ -91,25 +152,22 @@ function ValueStep({
   );
 }
 
-function ValueVisual({
-  visualRef,
-  scrollAnimated = false,
-}: {
-  visualRef?: RefObject<HTMLImageElement | null>;
-  scrollAnimated?: boolean;
-}) {
+function ValueFlowArrowHorizontal() {
   return (
-    <div className="flex shrink-0 items-center justify-center">
-      <img
-        ref={visualRef}
-        src="/images/puzzle-pieces.png?v=1"
-        alt=""
-        aria-hidden="true"
-        draggable={false}
-        className="pointer-events-none h-auto max-h-[11vh] w-full max-w-[min(100%,220px)] object-contain sm:max-h-[18vh] md:max-h-[min(40vh,320px)]"
-        style={scrollAnimated ? { opacity: 0.15, transform: "scale(0.9)" } : undefined}
+    <svg
+      viewBox="0 0 48 16"
+      className="value-flow-arrow-h h-[1.125rem] w-12 shrink-0 md:h-5 md:w-[3.25rem]"
+      aria-hidden="true"
+    >
+      <path
+        d="M46 8H6M10 4L4 8L10 12"
+        fill="none"
+        stroke="#2a9d8f"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-    </div>
+    </svg>
   );
 }
 
@@ -117,26 +175,103 @@ function ValueCta({
   label,
   ctaRef,
   scrollAnimated = false,
+  underCenterStep = false,
 }: {
   label: string;
   ctaRef?: RefObject<HTMLDivElement | null>;
   scrollAnimated?: boolean;
+  underCenterStep?: boolean;
 }) {
   const offset = ctaSlideOffsetPx();
+
+  const button = <HeroCtaButton variant="hero-white" label={label} className="mx-auto" />;
+
+  if (underCenterStep) {
+    return (
+      <div
+        ref={ctaRef}
+        className="value-cta-cell relative z-10"
+        style={
+          scrollAnimated
+            ? { opacity: 0, transform: `translate3d(${offset}px, 0, 0)` }
+            : undefined
+        }
+      >
+        {button}
+      </div>
+    );
+  }
 
   return (
     <div
       ref={ctaRef}
-      className="mt-auto flex w-full shrink-0 flex-col items-center pt-3 pb-1 sm:pt-4 md:mt-auto"
+      className="relative z-10 mt-auto flex w-full shrink-0 flex-col items-center pt-3 pb-1 sm:pt-4"
       style={
         scrollAnimated
           ? { opacity: 0, transform: `translate3d(${offset}px, 0, 0)` }
           : undefined
       }
     >
-      <HeroCtaButton variant="hero-white" label={label} className="mx-auto" />
-      <CtaMicrocopy className="text-sage" />
+      {button}
     </div>
+  );
+}
+
+function ValueStepMotionItem({
+  item,
+  index,
+}: {
+  item: ValueItem;
+  index: number;
+}) {
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      className="mx-auto w-full max-w-[24rem]"
+      initial={reduce ? false : { opacity: 0, x: STEP_SLIDE_OFFSET_PX }}
+      whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.45 }}
+      transition={{ duration: 0.7, delay: 0.12 + index * 0.12, ease: stepEase }}
+    >
+      <ValueStep item={item} compact />
+    </motion.div>
+  );
+}
+
+function ValueDesktopStep({
+  item,
+  index,
+}: {
+  item: ValueItem;
+  index: number;
+}) {
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0, x: STEP_SLIDE_OFFSET_PX }}
+      whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.45 }}
+      transition={{ duration: 0.6, delay: 0.08 + index * 0.1, ease: stepEase }}
+    >
+      <ValueStep item={item} desktop />
+    </motion.div>
+  );
+}
+
+function ValueDesktopArrow({ index }: { index: number }) {
+  const reduce = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={reduce ? false : { opacity: 0 }}
+      whileInView={reduce ? undefined : { opacity: 1 }}
+      viewport={{ once: true, amount: 0.45 }}
+      transition={{ duration: 0.4, delay: 0.14 + index * 0.1, ease: stepEase }}
+    >
+      <ValueFlowArrowHorizontal />
+    </motion.div>
   );
 }
 
@@ -149,19 +284,9 @@ function ValueBreakdownMobile() {
         <ValueTitle lines={value.h2Lines} />
       </FadeIn>
 
-      <FadeIn delay={0.08} className="mt-4 flex justify-center sm:mt-6">
-        <ValueVisual />
-      </FadeIn>
-
-      <div className="mx-auto mt-4 flex w-full max-w-3xl flex-col items-center gap-2 sm:mt-6 sm:gap-3">
+      <div className="mx-auto mt-4 flex w-full max-w-3xl flex-col items-center gap-3 sm:mt-6 sm:gap-4">
         {value.items.map((item, index) => (
-          <FadeIn
-            key={item.number}
-            delay={0.14 + index * 0.08}
-            className="w-full max-w-2xl lg:max-w-3xl"
-          >
-            <ValueStep item={item} />
-          </FadeIn>
+          <ValueStepMotionItem key={item.number} item={item} index={index} />
         ))}
       </div>
 
@@ -174,129 +299,47 @@ function ValueBreakdownMobile() {
 
 function ValueBreakdownDesktop() {
   const { value } = salesCopy;
-  const outerRef = useRef<HTMLDivElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
-  const visualRef = useRef<HTMLImageElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    const outer = outerRef.current;
-    const pin = pinRef.current;
-    const visual = visualRef.current;
-    const cta = ctaRef.current;
-    if (!outer || !pin || !visual || !cta) return;
-
-    const resetVisible = () => {
-      outer.style.height = "auto";
-      visual.style.opacity = "1";
-      visual.style.transform = "none";
-      pin.querySelectorAll<HTMLElement>("[data-scroll-step]").forEach((step) => {
-        step.style.opacity = "1";
-        step.style.transform = "none";
-      });
-      cta.style.opacity = "1";
-      cta.style.transform = "none";
-    };
-
-    if (prefersReducedMotion()) {
-      resetVisible();
-      return;
-    }
-
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      const steps = Array.from(
-        pin.querySelectorAll<HTMLElement>("[data-scroll-step]"),
-      );
-      const animatedEls = [visual, ...steps, cta];
-      const stepOffset = slideOffsetPx();
-      const ctaOffset = ctaSlideOffsetPx();
-
-      const setVisualOpacity = gsap.quickSetter(visual, "opacity");
-      const setVisualTransform = gsap.quickSetter(visual, "transform");
-      const stepSetters = steps.map((step) => ({
-        opacity: gsap.quickSetter(step, "opacity"),
-        transform: gsap.quickSetter(step, "transform"),
-      }));
-      const setCtaOpacity = gsap.quickSetter(cta, "opacity");
-      const setCtaTransform = gsap.quickSetter(cta, "transform");
-
-      const updateScene = (progress: number) => {
-        const visualT = clamp(progress / 0.28);
-        setVisualOpacity(0.15 + visualT * 0.85);
-        setVisualTransform(`scale(${0.9 + visualT * 0.1})`);
-
-        stepSetters.forEach((setters, index) => {
-          const t = clamp(stepLocalProgress(progress, index, steps.length));
-          setters.opacity(t);
-          setters.transform(`translate3d(${(1 - t) * stepOffset}px, 0, 0)`);
-        });
-
-        const ctaT = clamp((progress - 0.84) / 0.16);
-        setCtaOpacity(ctaT);
-        setCtaTransform(`translate3d(${(1 - ctaT) * ctaOffset}px, 0, 0)`);
-      };
-
-      const ctx = gsap.context(() => {
-        ScrollTrigger.create({
-          trigger: outer,
-          start: "top top",
-          end: "bottom bottom",
-          pin,
-          scrub: 0.45,
-          anticipatePin: 0,
-          fastScrollEnd: true,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => updateScene(self.progress),
-          onEnter: () => setWillChange(animatedEls, true),
-          onLeave: () => setWillChange(animatedEls, false),
-          onEnterBack: () => setWillChange(animatedEls, true),
-          onLeaveBack: () => setWillChange(animatedEls, false),
-        });
-
-        updateScene(0);
-      }, outer);
-
-      return () => ctx.revert();
-    });
-
-    return () => mm.revert();
-  }, []);
 
   return (
-    <div
-      ref={outerRef}
-      data-scroll-outer
-      className="hidden h-[240vh] overflow-hidden md:block"
-    >
-      <div
-        ref={pinRef}
-        className="relative box-border flex h-svh max-h-svh w-full max-w-full min-h-0 flex-col overflow-hidden overscroll-none bg-white px-6 pt-10 pb-12 lg:px-8"
-      >
+    <div className="hidden px-6 py-5 md:block lg:px-8 lg:py-6">
+      <ValueCurveArrow placement="start" />
+
+      <FadeIn>
         <ValueTitle lines={value.h2Lines} />
+      </FadeIn>
 
-        <div className="mt-4 grid min-h-0 w-full flex-1 grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] items-center gap-8 lg:gap-10">
-          <ValueVisual visualRef={visualRef} scrollAnimated />
+      <div className="value-desktop-stack mx-auto mt-3 flex w-full flex-col items-center gap-3 md:mt-4 md:gap-4">
+        <div className="value-steps-horizontal relative w-full shrink-0 px-2 lg:px-4">
+          <div className="value-step-slot value-step-slot-1">
+            <ValueDesktopStep item={value.items[0]} index={0} />
+          </div>
 
-          <div className="mx-auto flex min-h-0 w-full max-w-3xl min-w-0 flex-col items-center gap-3 px-1 lg:max-w-4xl">
-            <div className="flex w-full max-w-2xl flex-col gap-3 lg:max-w-3xl">
-              {value.items.map((item) => (
-                <ValueStep key={item.number} item={item} scrollStep />
-              ))}
-            </div>
+          <div className="value-flow-arrow-cell value-flow-arrow-cell-1">
+            <ValueDesktopArrow index={0} />
+          </div>
+
+          <div className="value-step-slot value-step-slot-2">
+            <ValueDesktopStep item={value.items[1]} index={1} />
+          </div>
+
+          <div className="value-flow-arrow-cell value-flow-arrow-cell-2">
+            <ValueDesktopArrow index={1} />
+          </div>
+
+          <div className="value-step-slot value-step-slot-3">
+            <ValueDesktopStep item={value.items[2]} index={2} />
           </div>
         </div>
-
-        <ValueCta label={value.cta} ctaRef={ctaRef} scrollAnimated />
       </div>
+
+      <ValueCurveArrow placement="end" />
     </div>
   );
 }
 
 export function ValueBreakdownSection() {
   return (
-    <section id="value" className="relative scroll-mt-20 overflow-x-clip bg-white">
+    <section id="value" className="relative scroll-mt-20 overflow-x-clip bg-transparent">
       <ValueBreakdownMobile />
       <ValueBreakdownDesktop />
     </section>

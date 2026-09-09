@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 
 import { FadeIn } from "@/components/motion/FadeIn";
 import { HeroLogo } from "@/components/sections/HeroLogo";
@@ -28,7 +28,7 @@ export function AccessibilityPage() {
           </p>
 
           <section className="space-y-4">
-            <h2 className="font-heading text-[clamp(20px,3.5vw,26px)] font-bold text-pine">
+            <h2 className="font-ploni font-bold text-[clamp(20px,3.5vw,26px)] font-bold text-pine">
               שירות לקוחות נגיש
             </h2>
             <ul className="list-disc space-y-2 pr-5">
@@ -72,7 +72,7 @@ export function AccessibilityPage() {
           </p>
 
           <section className="space-y-3">
-            <h3 className="font-heading text-[clamp(18px,3vw,22px)] font-bold text-pine">
+            <h3 className="font-ploni font-bold text-[clamp(18px,3vw,22px)] font-bold text-pine">
               לפניות בנושא נגישות:
             </h3>
             <p>
@@ -94,7 +94,7 @@ export function AccessibilityPage() {
 
         <Link
           to="/"
-          className="mt-10 inline-flex font-heading font-bold text-pine"
+          className="mt-10 inline-flex font-ploni font-bold text-pine"
         >
           חזרה לדף הבית
         </Link>

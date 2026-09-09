@@ -1,7 +1,6 @@
-import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
+﻿import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SalesSection } from "@/components/sales/SalesSection";
-import { CtaMicrocopy } from "@/components/sales/WhatsAppCta";
 import { salesCopy } from "@/lib/content";
 
 export function FinalOfferSection() {
@@ -15,7 +14,7 @@ export function FinalOfferSection() {
       innerClassName="text-center"
     >
       <FadeIn>
-        <h2 className="offer-title mx-auto w-full text-center font-hero">
+        <h2 className="offer-title mx-auto w-full text-center font-ploni font-extrabold">
           <span className="block whitespace-nowrap">{offer.h2Lines[0]}</span>
           <span className="mt-1 block whitespace-nowrap sm:mt-1.5">
             {offer.h2Lines[1]}
@@ -45,7 +44,7 @@ export function FinalOfferSection() {
       </FadeIn>
 
       <FadeIn delay={0.16}>
-        <p className="offer-hook mx-auto mt-10 max-w-[22ch] font-hero">
+        <p className="offer-hook mx-auto mt-10 max-w-[22ch] font-ploni font-extrabold">
           {offer.hook}
         </p>
       </FadeIn>
@@ -62,7 +61,6 @@ export function FinalOfferSection() {
 
       <FadeIn delay={0.32} className="mt-12 flex flex-col items-center">
         <HeroCtaButton variant="hero-white" label={offer.cta} />
-        <CtaMicrocopy className="text-sage" />
       </FadeIn>
     </SalesSection>
   );

@@ -7,8 +7,9 @@ import { Navbar } from "@/components/layout/Navbar";
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex min-h-svh flex-col">
+      <div className="site-ambient-edge" aria-hidden="true" />
       <Navbar />
-      <div className="flex-1">{children}</div>
+      <div className="relative z-[1] flex-1">{children}</div>
       <Footer />
       <FloatingWhatsApp />
     </div>

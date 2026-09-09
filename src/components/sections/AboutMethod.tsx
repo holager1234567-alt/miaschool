@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { SchoolIntroLeadParagraph } from "@/components/sections/SchoolIntroLeadParagraph";
 import { methodParagraphs, schoolIntroParagraphs } from "@/lib/content";
 
@@ -9,10 +8,9 @@ export function AboutMethod() {
       id="about"
       className="relative scroll-mt-24 overflow-hidden bg-white px-6 py-14 text-pine md:py-20"
     >
-      <BotanicalBackdrop />
       <div className="container-page relative z-10 mx-auto max-w-3xl">
         <FadeIn className="text-center">
-          <p className="font-logo text-[clamp(28px,6vw,42px)] leading-none text-wood">
+          <p className="font-ploni font-bold text-[clamp(28px,6vw,42px)] leading-none text-wood">
             Mia&apos;s School
           </p>
         </FadeIn>
@@ -34,7 +32,7 @@ export function AboutMethod() {
             aria-hidden="true"
             className="mx-auto mb-10 h-px max-w-xs bg-gradient-to-l from-transparent via-wood/35 to-transparent"
           />
-          <h2 className="heading-section text-center font-hero text-pine">
+          <h2 className="heading-section text-center font-ploni font-extrabold text-pine">
             השיטה המוצלחת שלנו ללימודי אנגלית
           </h2>
           <div className="mt-8 space-y-6 text-center">

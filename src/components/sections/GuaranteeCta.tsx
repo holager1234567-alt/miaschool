@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+﻿import { useLayoutEffect, useRef } from "react";
 
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
@@ -32,7 +32,7 @@ export function GuaranteeCta() {
         data-guarantee-block
         className="container-page mx-auto max-w-none text-center"
       >
-        <p className="font-hero text-[clamp(28px,8vw,52px)] font-bold leading-[1.15] text-navy sm:text-[clamp(28px,7vw,52px)]">
+        <p className="font-ploni font-extrabold text-[clamp(28px,8vw,52px)] font-bold leading-[1.15] text-navy sm:text-[clamp(28px,7vw,52px)]">
           <span className="block sm:inline">
             <span className="text-logo-tan">8 מפגשים</span>
           </span>{" "}

@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+﻿import { useLayoutEffect, useRef } from "react";
 
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
@@ -32,7 +32,7 @@ export function LessonExperienceCta() {
         data-lesson-experience-block
         className="container-page mx-auto max-w-3xl text-center"
       >
-        <h2 className="heading-section font-hero text-[#163532]">
+        <h2 className="heading-section font-ploni font-extrabold text-[#163532]">
           <span className="block">כל שיעור הוא חוויה מעצימה</span>
           <span className="mt-2 block text-[clamp(20px,4.5vw,32px)] font-bold leading-snug text-[#3d5552] sm:mt-3">
             למידת שפה לצד פיתוח ביטחון עצמי ותחושת הצלחה.

@@ -1,4 +1,4 @@
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { SalesSection } from "@/components/sales/SalesSection";
 import { TeamTree } from "@/components/sales/TeamTree";
 import { salesCopy } from "@/lib/content";
@@ -7,9 +7,9 @@ export function StoryTeamSection() {
   const { story } = salesCopy;
 
   return (
-    <SalesSection id="story" tone="sage" className="pt-4 pb-6 md:pt-6 md:pb-8" innerClassName="max-w-4xl">
+    <SalesSection id="story" tone="sage" className="pt-4 pb-6 md:pt-5 md:pb-8" innerClassName="max-w-4xl">
       <FadeIn>
-        <h2 className="mx-auto max-w-full text-center font-hero text-pine">
+        <h2 className="mx-auto max-w-full text-center font-ploni font-extrabold text-pine">
           <span className="story-title-lead block">{story.h2Lines[0]}</span>
         </h2>
       </FadeIn>

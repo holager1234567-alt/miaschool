@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { HeroLogo } from "@/components/sections/HeroLogo";
 import { HeroStats } from "@/components/sections/HeroStats";
@@ -11,14 +10,11 @@ export function Hero() {
       id="hook"
       className="relative scroll-mt-20 overflow-x-clip bg-white pt-10 pb-4 text-pine md:pt-14 md:pb-5"
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <BotanicalBackdrop />
-      </div>
       <div className="container-page relative z-10 mx-auto flex w-full min-w-0 max-w-3xl flex-col items-center px-4 text-center sm:px-6">
         <HeroLogo variant="brand" />
 
         <FadeIn>
-          <h1 className="font-hero hero-title-heavy mb-0 text-[clamp(21px,5.2vw,40px)] leading-[1.28] text-pine">
+          <h1 className="font-ploni font-extrabold hero-title-heavy mb-0 text-[clamp(26px,6.4vw,40px)] leading-[1.26] text-pine md:text-[clamp(21px,5.2vw,40px)] md:leading-[1.28]">
             <span className="hero-h1-line">שמונה מפגשים והילדים שלכם</span>
             <span className="block">יתחילו לדבר אנגלית</span>
             <span className="hero-h1-line">בביטחון מלא ובלי שום פחד</span>
@@ -37,7 +33,7 @@ export function Hero() {
         </FadeIn>
       </div>
 
-      <FadeIn delay={0.24} className="relative z-10 mt-6 w-full overflow-x-clip sm:mt-8">
+      <FadeIn delay={0.24} className="relative z-20 mt-6 w-full sm:mt-8">
         <HeroTestimonials />
       </FadeIn>
     </section>

@@ -1,6 +1,5 @@
-import { SalesSection } from "@/components/sales/SalesSection";
+﻿import { SalesSection } from "@/components/sales/SalesSection";
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
-import { CtaMicrocopy } from "@/components/sales/WhatsAppCta";
 import { salesCopy } from "@/lib/content";
 
 export function HookSection() {
@@ -18,7 +17,7 @@ export function HookSection() {
         </div>
       </div>
 
-      <h1 className="sales-h1 sales-h1-heavy mx-auto font-hero text-pine">
+      <h1 className="sales-h1 sales-h1-heavy mx-auto font-ploni font-extrabold text-pine">
         {hook.h1Lines.map((line) => (
           <span key={line} className="hero-h1-line">
             {line}
@@ -36,7 +35,6 @@ export function HookSection() {
 
       <div className="mt-10 flex flex-col items-center">
         <HeroCtaButton variant="hero-white" label={hook.cta} />
-        <CtaMicrocopy className="text-sage" />
       </div>
     </SalesSection>
   );

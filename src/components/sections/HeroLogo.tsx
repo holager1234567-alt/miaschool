@@ -1,4 +1,4 @@
-type HeroLogoProps = {
+﻿type HeroLogoProps = {
   variant?: "logo" | "brand";
 };
 
@@ -32,7 +32,7 @@ export function HeroLogo({ variant = "logo" }: HeroLogoProps) {
         />
       </div>
       {isBrand ? (
-        <p className="mt-1 font-logo text-[clamp(28px,5.8vw,48px)] leading-none tracking-[0.03em] text-turquoise sm:mt-2">
+        <p className="mt-1 font-ploni font-bold text-[clamp(28px,5.8vw,48px)] leading-none tracking-[0.03em] text-turquoise sm:mt-2">
           Mia&apos;s School
         </p>
       ) : null}

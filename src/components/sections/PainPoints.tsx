@@ -1,5 +1,4 @@
-import { BotanicalBackdrop } from "@/components/BotanicalBackdrop";
-import { FadeIn } from "@/components/motion/FadeIn";
+﻿import { FadeIn } from "@/components/motion/FadeIn";
 import { painPoints } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -9,10 +8,9 @@ export function PainPoints() {
       id="pain"
       className="relative scroll-mt-24 overflow-hidden bg-white px-6 py-14 text-pine md:py-20"
     >
-      <BotanicalBackdrop className="opacity-70" />
       <div className="container-page relative z-10 mx-auto max-w-5xl">
         <FadeIn className="text-center">
-          <h2 className="heading-section font-hero text-pine">
+          <h2 className="heading-section font-ploni font-extrabold text-pine">
             אולי זה מוכר לכם מהבית?
           </h2>
         </FadeIn>

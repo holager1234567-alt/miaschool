@@ -1,4 +1,4 @@
-import { Menu, X } from "lucide-react";
+﻿import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -53,8 +53,8 @@ export function Navbar() {
       <aside
         id="side-nav"
         className={cn(
-          "fixed top-[4.75rem] right-4 z-50 flex w-[min(300px,calc(100vw-2rem))] flex-col overflow-y-auto rounded-3xl bg-linen px-5 py-6 shadow-lift transition-transform duration-300",
-          open ? "translate-x-0" : "translate-x-full",
+          "nav-panel fixed top-[4.75rem] right-4 z-50 flex w-[min(300px,calc(100vw-2rem))] flex-col overflow-y-auto rounded-3xl bg-linen px-5 py-6 transition-[transform,visibility,box-shadow] duration-300",
+          open ? "nav-panel-open shadow-lift" : "nav-panel-closed",
         )}
         aria-hidden={!open}
       >
@@ -74,7 +74,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="font-hero text-[clamp(18px,4.6vw,22px)] leading-none font-bold text-pine transition-colors hover:text-turquoise"
+                className="font-ploni font-extrabold text-[clamp(18px,4.6vw,22px)] leading-none font-bold text-pine transition-colors hover:text-turquoise"
                 onClick={() => setOpen(false)}
               >
                 {link.label}

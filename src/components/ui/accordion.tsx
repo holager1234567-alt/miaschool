@@ -1,4 +1,4 @@
-import * as AccordionPrimitive from "@radix-ui/react-accordion";
+﻿import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import type { ComponentProps } from "react";
 
@@ -34,7 +34,7 @@ function AccordionTrigger({
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         className={cn(
-          "flex flex-1 items-center justify-between gap-4 py-5 text-right font-heading text-[17px] font-bold text-pine transition-colors hover:text-wood [&[data-state=open]>svg]:rotate-180",
+          "font-ploni flex flex-1 items-center justify-between gap-4 py-5 text-right text-[17px] font-bold text-pine transition-colors hover:text-wood [&[data-state=open]>svg]:rotate-180",
           className,
         )}
         {...props}

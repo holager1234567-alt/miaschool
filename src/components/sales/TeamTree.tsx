@@ -89,7 +89,7 @@ function TeamMemberProfile({
       />
       <h3
         className={cn(
-          "mt-3 font-bold text-pine",
+          "font-ploni mt-3 font-bold text-pine",
           featured
             ? "text-xl sm:text-2xl md:text-[1.75rem]"
             : compact
@@ -114,7 +114,7 @@ function TeamMemberProfile({
         </p>
       ) : null}
       {showQuote ? (
-        <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-black sm:text-base md:text-[17px]">
+        <p className="font-tachles mt-3 whitespace-pre-line text-sm leading-relaxed text-black sm:text-base md:text-[17px]">
           ״{member.quote}״
         </p>
       ) : null}

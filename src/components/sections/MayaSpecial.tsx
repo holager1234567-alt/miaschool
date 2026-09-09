@@ -1,4 +1,4 @@
-import { Heart, Languages, Shield, Sparkles } from "lucide-react";
+﻿import { Heart, Languages, Shield, Sparkles } from "lucide-react";
 import { useLayoutEffect, useRef } from "react";
 
 import { mayaSpecials } from "@/lib/content";
@@ -55,7 +55,7 @@ export function MayaSpecial() {
                 className="rounded-[20px] border border-line bg-cream/40 p-5 shadow-soft md:p-6"
               >
                 <Icon className="size-7 text-teal" strokeWidth={1.75} />
-                <h3 className="mt-4 font-heading text-[18px] font-bold text-navy md:text-[20px]">
+                <h3 className="mt-4 font-ploni font-bold text-[18px] font-bold text-navy md:text-[20px]">
                   {item.title}
                 </h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted md:text-[16px]">

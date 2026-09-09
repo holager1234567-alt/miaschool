@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 
 import { FadeIn } from "@/components/motion/FadeIn";
 
@@ -25,7 +25,7 @@ export function PrivacyPage() {
         </div>
         <Link
           to="/"
-          className="mt-10 inline-flex font-heading font-bold text-pine"
+          className="mt-10 inline-flex font-ploni font-bold text-pine"
         >
           חזרה לדף הבית
         </Link>
