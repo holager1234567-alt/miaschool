@@ -17,11 +17,11 @@ export function Hero() {
         <HeroLogo variant="hero" />
 
         <FadeIn className="mt-1 w-full sm:mt-0">
-          <h1 className="hero-title-heavy font-ploni mx-auto mb-0 w-full max-w-full font-extrabold md:max-w-4xl">
+          <h1 className="hero-title-heavy font-ploni mx-auto mb-0 w-full max-w-full text-center font-extrabold md:max-w-4xl">
             <span className="block text-pretty text-[clamp(30px,7.2vw,48px)] leading-[1.2] text-turquoise md:text-[clamp(36px,4.2vw,52px)] md:leading-[1.26]">
               {hook.h1Lead}
             </span>
-            <span className="brand-gradient-text mt-2 block text-[clamp(32px,8.2vw,54px)] leading-[1.12] md:mt-2.5">
+            <span className="hero-accent-animated mt-2 inline-block text-[clamp(36px,9.2vw,58px)] leading-[1.1] md:mt-2.5 md:text-[clamp(42px,5vw,64px)]">
               {hook.h1Accent}
             </span>
           </h1>

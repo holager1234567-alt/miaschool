@@ -13,7 +13,7 @@ export const WHATSAPP_E164 = normalizeWhatsAppPhone(
 );
 
 export const WHATSAPP_PREFILL =
-  "שלום מיה 😊 הגעתי דרך הדף נחיתה ואשמח לשמוע פרטים ולתאם שיחת היכרות";
+  "שלום מיה 😊 הגעתי אלייך דרך דף הנחיתה, אשמח לשמוע פרטים נוספים ולתאם שיחת היכרות";
 
 export function whatsappHref(text = WHATSAPP_PREFILL) {
   const params = new URLSearchParams({

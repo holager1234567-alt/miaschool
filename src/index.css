@@ -580,6 +580,44 @@
   filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.45));
 }
 
+.hero-accent-animated {
+  background-image: linear-gradient(
+    100deg,
+    #1f8f84 0%,
+    #2a9d8f 18%,
+    #5eb5a8 36%,
+    #c9b87a 58%,
+    #d6c58d 72%,
+    #5eb5a8 86%,
+    #2a9d8f 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: hero-accent-gradient-flow 5s ease-in-out infinite;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4));
+}
+
+@keyframes hero-accent-gradient-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-accent-animated {
+    animation: none;
+    background-position: 0% 50%;
+  }
+}
+
 .highlight-brand-title {
   font-family: var(--font-ploni);
   font-size: clamp(2rem, 6.5vw, 2.875rem);
