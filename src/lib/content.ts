@@ -1,11 +1,27 @@
-export const WHATSAPP_E164 =
-  import.meta.env.VITE_WHATSAPP_NUMBER ?? "972542294626";
+const DEFAULT_WHATSAPP_E164 = "972542294626";
+
+export function normalizeWhatsAppPhone(raw: string): string {
+  const digits = raw.replace(/\D/g, "");
+  if (!digits) return DEFAULT_WHATSAPP_E164;
+  if (digits.startsWith("972")) return digits;
+  if (digits.startsWith("0")) return `972${digits.slice(1)}`;
+  return digits;
+}
+
+export const WHATSAPP_E164 = normalizeWhatsAppPhone(
+  import.meta.env.VITE_WHATSAPP_NUMBER?.trim() || DEFAULT_WHATSAPP_E164,
+);
 
 export const WHATSAPP_PREFILL =
   "שלום מיה 😊 הגעתי דרך הדף נחיתה ואשמח לשמוע פרטים ולתאם שיחת היכרות";
 
 export function whatsappHref(text = WHATSAPP_PREFILL) {
-  return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(text)}`;
+  const params = new URLSearchParams({
+    phone: WHATSAPP_E164,
+    text,
+  });
+
+  return `https://api.whatsapp.com/send?${params.toString()}`;
 }
 
 export const navLinks = [

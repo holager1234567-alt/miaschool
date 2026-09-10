@@ -18,8 +18,7 @@ export function WhatsAppCta({
   return (
     <a
       href={whatsappHref()}
-      target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className={cn(
         "font-ploni inline-flex w-full max-w-xl items-center justify-center gap-2 rounded-full px-6 py-4 text-center text-base font-bold transition-transform active:scale-[0.98] sm:text-lg",
         variant === "green" &&

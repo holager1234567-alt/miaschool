@@ -17,8 +17,7 @@ export function HeroCtaButton({
   return (
     <a
       href={whatsappHref()}
-      target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className={cn(
         "font-ploni inline-flex items-center justify-center rounded-2xl text-center font-bold transition-all duration-200 active:scale-[0.98]",
         variant === "intro-gold"
