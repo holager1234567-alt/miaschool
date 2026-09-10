@@ -246,7 +246,7 @@ export function SchoolTeamTree() {
       <div className="container-page relative z-10 mx-auto max-w-6xl">
         <FadeIn className="mx-auto mb-10 max-w-[760px] text-center md:mb-12">
           <h2 className="heading-section font-ploni font-extrabold text-pine">
-            עץ השורשים של בית הספר
+            עץ השורשים של מיה&apos;סקול
           </h2>
           <p className="mt-4 text-muted">
             מיה בראש העץ, ומתחתיה שש מורות מובילות שפותחות את הלב לשפה.

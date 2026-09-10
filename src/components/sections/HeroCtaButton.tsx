@@ -26,7 +26,7 @@ export function HeroCtaButton({
           : variant === "gold-glow"
             ? "hero-cta-button hero-cta-button--gold-glow"
             : isHeroStyle
-            ? "hero-cta-button hero-cta-button--hero-white w-full max-w-full whitespace-normal px-6 py-3.5 text-[clamp(12px,3.2vw,17px)] leading-snug text-pine sm:w-auto sm:max-w-none sm:whitespace-nowrap sm:px-9 sm:py-4 sm:leading-none"
+            ? "hero-cta-button hero-cta-button--hero-white w-full max-w-full whitespace-normal px-6 py-3.5 text-[clamp(12px,3.2vw,17px)] leading-snug text-pine sm:w-auto sm:max-w-2xl sm:px-9 sm:py-4 sm:leading-snug md:max-w-none"
             : "w-full max-w-xl bg-pine px-5 py-3.5 text-[15px] leading-snug text-linen shadow-[0_12px_28px_-8px_rgba(27,56,43,0.35)] hover:bg-navy-soft hover:shadow-[0_14px_32px_-8px_rgba(27,56,43,0.4)] sm:px-8 sm:py-4 sm:text-lg",
         className,
       )}

@@ -7,7 +7,7 @@ export function PrivacyPage() {
     <main id="main" className="section-space">
       <FadeIn>
         <article className="container-narrow">
-        <p className="caption-tag text-wood">מיה סקול</p>
+        <p className="caption-tag text-wood">מיה&apos;סקול</p>
         <h1 className="heading-section mt-2">מדיניות פרטיות</h1>
         <div className="mt-8 space-y-4 text-muted">
           <p>

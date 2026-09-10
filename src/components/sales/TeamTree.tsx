@@ -63,6 +63,8 @@ function TeamMemberProfile({
   compact?: boolean;
 }) {
   const showQuote = Boolean(member.quote) && !member.specialty;
+  const isBeatriceQuote =
+    showQuote && member.name.includes("ביאטריס");
 
   return (
     <article
@@ -73,7 +75,9 @@ function TeamMemberProfile({
           : compact
             ? "w-full min-w-0 max-w-[9.5rem]"
             : showQuote
-              ? "max-w-[17rem] sm:max-w-[19rem] lg:max-w-[15rem]"
+              ? isBeatriceQuote
+                ? "max-w-[17rem] sm:max-w-[19rem] lg:max-w-[17rem]"
+                : "max-w-[17rem] sm:max-w-[19rem] lg:max-w-[15rem]"
               : "max-w-[13rem]",
       )}
     >

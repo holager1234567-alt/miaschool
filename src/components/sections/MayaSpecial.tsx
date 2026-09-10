@@ -39,7 +39,7 @@ export function MayaSpecial() {
           <p className="caption-tag mb-3 text-coral">מה מיוחד במיה</p>
           <h2 className="heading-section">לא עוד מורה, מישהי שמכירה את הדרך</h2>
           <p className="mt-4 text-muted">
-            מיה הקימה בית ספר בוטיק כי ראתה ילדים מבינים הכל ונאלמים ברגע האמת.
+            מיה הקימה את מיה&apos;סקול כי ראתה ילדים מבינים הכל ונאלמים ברגע האמת.
             הנה מה שמבדיל אותה מכל שיעור פרטי רגיל.
           </p>
         </div>

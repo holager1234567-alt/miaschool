@@ -56,14 +56,29 @@ function ValueTitle({ lines }: { lines: readonly [string, string] }) {
   );
 }
 
-function StepPuzzleIcon({ className = "" }: { className?: string }) {
+function StepTreeLogo({
+  className = "",
+  size = "inline",
+}: {
+  className?: string;
+  size?: "inline" | "hero" | "stacked" | "desktop";
+}) {
+  const sizeClass =
+    size === "hero"
+      ? "h-[68px] w-[96px] sm:h-[72px] sm:w-[104px]"
+      : size === "desktop"
+        ? "h-[4.25rem] w-[6rem] lg:h-[4.75rem] lg:w-[6.5rem]"
+      : size === "stacked"
+        ? "h-8 w-8 sm:h-9 sm:w-9"
+        : "h-6 w-6 shrink-0 md:h-7 md:w-7";
+
   return (
     <img
-      src="/images/puzzle-pieces.png?v=1"
+      src="/images/logo.png?v=5"
       alt=""
       aria-hidden="true"
       draggable={false}
-      className={`pointer-events-none h-auto w-[18px] shrink-0 object-contain opacity-90 md:w-[20px] ${className}`}
+      className={`pointer-events-none object-contain object-top ${sizeClass} ${className}`}
     />
   );
 }
@@ -84,17 +99,9 @@ function ValueStep({
   if (desktop) {
     return (
       <article className="value-step-desktop mx-auto flex w-full flex-col items-center text-center">
-        <div className="flex items-center justify-center gap-1.5">
-          <StepPuzzleIcon className="w-5" />
-          <span
-            aria-hidden="true"
-            className="process-step-number value-step-number-desktop font-ploni font-extrabold leading-none"
-          >
-            {item.number}
-          </span>
-        </div>
-        <h3 className="value-step-title-desktop mt-1.5">{item.title}</h3>
-        <p className="value-step-desc-desktop mt-1 text-black">{item.description}</p>
+        <StepTreeLogo size="desktop" className="mb-3 lg:mb-3.5" />
+        <h3 className="value-step-title-desktop text-balance">{item.title}</h3>
+        <p className="value-step-desc-desktop mt-1.5 text-black">{item.description}</p>
       </article>
     );
   }
@@ -110,17 +117,9 @@ function ValueStep({
             : undefined
         }
       >
-        <div className="flex items-center justify-center gap-1.5">
-          <StepPuzzleIcon />
-          <span
-            aria-hidden="true"
-            className="process-step-number value-step-number-compact font-ploni font-extrabold leading-none"
-          >
-            {item.number}
-          </span>
-        </div>
-        <h3 className="value-step-title-compact mt-1.5">{item.title}</h3>
-        <p className="value-step-desc-compact mt-1 text-black">{item.description}</p>
+        <StepTreeLogo size="hero" className="mb-2.5 sm:mb-3" />
+        <h3 className="value-step-title-compact">{item.title}</h3>
+        <p className="value-step-desc-compact mt-1.5 text-black">{item.description}</p>
       </article>
     );
   }
@@ -128,26 +127,18 @@ function ValueStep({
   return (
     <article
       data-scroll-step={scrollStep ? "" : undefined}
-      className="mx-auto flex w-full max-w-xl items-start justify-center gap-3 sm:max-w-2xl sm:gap-4"
+      className="mx-auto flex w-full max-w-xl flex-col items-center text-center sm:max-w-2xl"
       style={
         scrollStep
           ? { opacity: 0, transform: `translate3d(${offset}px, 0, 0)` }
           : undefined
       }
     >
-      <div className="flex shrink-0 items-center gap-1.5 pt-0.5">
-        <StepPuzzleIcon className="w-[16px] sm:w-[18px]" />
-        <span
-          aria-hidden="true"
-          className="process-step-number font-ploni font-extrabold text-[clamp(38px,10vw,60px)] leading-none"
-        >
-          {item.number}
-        </span>
-      </div>
-      <div className="min-w-0 flex-1 pt-0.5 text-center">
+      <div className="flex items-center justify-center gap-2">
+        <StepTreeLogo />
         <h3 className="process-step-title">{item.title}</h3>
-        <p className="process-step-description mt-1 text-black">{item.description}</p>
       </div>
+      <p className="process-step-description mt-1.5 text-black">{item.description}</p>
     </article>
   );
 }
@@ -286,7 +277,7 @@ function ValueBreakdownMobile() {
 
       <div className="mx-auto mt-4 flex w-full max-w-3xl flex-col items-center gap-3 sm:mt-6 sm:gap-4">
         {value.items.map((item, index) => (
-          <ValueStepMotionItem key={item.number} item={item} index={index} />
+          <ValueStepMotionItem key={item.id} item={item} index={index} />
         ))}
       </div>
 
@@ -308,7 +299,7 @@ function ValueBreakdownDesktop() {
         <ValueTitle lines={value.h2Lines} />
       </FadeIn>
 
-      <div className="value-desktop-stack mx-auto mt-3 flex w-full flex-col items-center gap-3 md:mt-4 md:gap-4">
+      <div className="value-desktop-stack mx-auto mt-3 flex w-full flex-col items-center gap-3 md:mt-9 md:gap-4 lg:mt-10">
         <div className="value-steps-horizontal relative w-full shrink-0 px-2 lg:px-4">
           <div className="value-step-slot value-step-slot-1">
             <ValueDesktopStep item={value.items[0]} index={0} />
@@ -339,7 +330,7 @@ function ValueBreakdownDesktop() {
 
 export function ValueBreakdownSection() {
   return (
-    <section id="value" className="relative scroll-mt-20 overflow-x-clip bg-transparent">
+    <section id="value" className="relative scroll-mt-20 overflow-x-clip bg-transparent md:overflow-x-visible">
       <ValueBreakdownMobile />
       <ValueBreakdownDesktop />
     </section>

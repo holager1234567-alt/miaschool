@@ -44,7 +44,7 @@ export function Wrapper() {
             <HeroCtaLeafWing side="right" className="h-9 sm:h-11 md:h-12" />
             <h2 className="heading-section font-ploni font-extrabold text-navy">
               <span className="block">למה לבחור</span>
-              <span className="block">בבית ספר של מיה?</span>
+              <span className="block">במיה&apos;סקול?</span>
             </h2>
             <HeroCtaLeafWing side="left" className="h-9 sm:h-11 md:h-12" />
           </div>

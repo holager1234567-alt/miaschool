@@ -1,4 +1,5 @@
-import type { HTMLAttributes } from "react";
+import { useInView } from "framer-motion";
+import { useRef, type HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -9,36 +10,45 @@ type SchoolIntroLeadParagraphProps = HTMLAttributes<HTMLParagraphElement> & {
 const emphasisClass =
   "font-bold text-turquoise text-[1.35em] sm:text-[1.5em]";
 
-const schoolIntroLeadClass =
-  "block font-semibold text-black text-[clamp(18px,4.6vw,22px)] sm:text-[1.375rem] md:text-2xl";
+const schoolIntroLeadOpeningClass =
+  "school-intro-lead-opening block font-ploni font-extrabold text-black";
 
-const schoolIntroLeadFirstLineClass =
-  "inline-block whitespace-nowrap text-black font-semibold max-sm:text-[clamp(15px,4.05vw,17px)] max-sm:tracking-[-0.028em] sm:text-inherit";
+const schoolIntroLeadRestClass =
+  "school-intro-lead-rest mt-2 block font-semibold text-black sm:mt-2.5";
 
 const schoolIntroLeadFirstLineDefaultClass =
   "inline-block whitespace-nowrap text-black font-semibold max-sm:text-[clamp(13px,3.65vw,15px)] max-sm:tracking-[-0.025em]";
-
-const schoolIntroLeadFirstLineWrapClass =
-  "max-sm:flex max-sm:w-full max-sm:justify-center max-sm:overflow-x-hidden sm:contents";
 
 export function SchoolIntroLeadParagraph({
   className = "",
   enlargeLeadIntro = false,
   ...props
 }: SchoolIntroLeadParagraphProps) {
-  const introLead = (
+  const leadRef = useRef<HTMLSpanElement>(null);
+  const isLeadVisible = useInView(leadRef, { once: true, amount: 0.65 });
+
+  const introLead = enlargeLeadIntro ? (
+    <span
+      ref={leadRef}
+      className={cn(
+        "school-intro-lead-emphasis",
+        isLeadVisible && "school-intro-lead-emphasis--visible",
+      )}
+    >
+      <span className={schoolIntroLeadOpeningClass}>
+        מיה&apos;סקול נולד מתוך שליחות עמוקה
+      </span>
+      <span className={schoolIntroLeadRestClass}>
+        לאפשר לכל תלמידה ותלמיד לרכוש{" "}
+        <br className="sm:hidden" />
+        ביטחון אמיתי בשפה האנגלית.
+      </span>
+    </span>
+  ) : (
     <>
-      <div className={schoolIntroLeadFirstLineWrapClass}>
-        <span
-          className={
-            enlargeLeadIntro
-              ? schoolIntroLeadFirstLineClass
-              : schoolIntroLeadFirstLineDefaultClass
-          }
-        >
-          בית הספר מיה סקול נולד מתוך שליחות עמוקה
-        </span>
-      </div>{" "}
+      <span className={schoolIntroLeadFirstLineDefaultClass}>
+        מיה&apos;סקול נולד מתוך שליחות עמוקה
+      </span>{" "}
       לאפשר לכל תלמידה ותלמיד לרכוש{" "}
       <br className="sm:hidden" />
       ביטחון אמיתי בשפה האנגלית.
@@ -47,11 +57,7 @@ export function SchoolIntroLeadParagraph({
 
   return (
     <p className={className} {...props}>
-      {enlargeLeadIntro ? (
-        <span className={schoolIntroLeadClass}>{introLead}</span>
-      ) : (
-        introLead
-      )}
+      {introLead}
       <span className="mt-4 block sm:mt-5">
         השיעורים מועברים
         <br />

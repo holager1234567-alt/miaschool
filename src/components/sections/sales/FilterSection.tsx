@@ -51,7 +51,7 @@ export function FilterSection() {
       </FadeIn>
 
       <FadeIn delay={0.08}>
-        <h2 className="authority-title filter-title mx-auto max-w-full text-center font-ploni font-extrabold text-pine">
+        <h2 className="authority-title filter-title mx-auto max-w-full text-center font-ploni font-extrabold text-turquoise">
           {filter.h2}
         </h2>
       </FadeIn>

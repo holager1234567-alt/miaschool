@@ -1,57 +1,8 @@
-﻿import { useInView } from "framer-motion";
-import { useRef, type CSSProperties } from "react";
-
-import { AuthorityTestimonials } from "@/components/sections/AuthorityTestimonials";
+﻿import { AuthorityTestimonials } from "@/components/sections/AuthorityTestimonials";
+import { HighlightLines } from "@/components/sales/HighlightLines";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { salesCopy } from "@/lib/content";
-import { cn } from "@/lib/utils";
-
-type AuthorityHighlightParagraph = Extract<
-  (typeof salesCopy.authority.paragraphs)[number],
-  { lead: string }
->;
-
-function AuthorityFamiliesHighlight({
-  paragraph,
-}: {
-  paragraph: AuthorityHighlightParagraph;
-}) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  const isVisible = useInView(ref, { once: true, amount: 0.55 });
-
-  const lines = [
-    paragraph.lead,
-    "afterLead" in paragraph ? paragraph.afterLead : null,
-    paragraph.rest,
-    "middle" in paragraph ? paragraph.middle : null,
-    "tail" in paragraph ? paragraph.tail : null,
-  ].filter(Boolean) as string[];
-
-  return (
-    <p
-      ref={ref}
-      className={cn(
-        "authority-families-highlight",
-        isVisible && "authority-families-highlight--visible",
-      )}
-    >
-      {lines.map((line, index) => (
-        <span
-          key={line}
-          className="authority-families-highlight-line block"
-          style={
-            {
-              "--accent-delay": `${0.12 + index * 0.22}s`,
-            } as CSSProperties
-          }
-        >
-          {line}
-        </span>
-      ))}
-    </p>
-  );
-}
 
 export function AuthoritySection() {
   const { authority } = salesCopy;
@@ -59,7 +10,7 @@ export function AuthoritySection() {
   return (
     <section
       id="proof"
-      className="relative scroll-mt-20 overflow-x-clip bg-transparent pt-3 pb-8 text-pine sm:pt-4 sm:pb-10 md:pt-5 md:pb-12"
+      className="relative scroll-mt-20 overflow-x-clip bg-transparent pt-3 pb-8 text-pine sm:pt-4 sm:pb-10 md:overflow-x-visible md:pt-5 md:pb-12"
     >
       <div className="container-page mx-auto max-w-6xl px-4 sm:px-6">
         <FadeIn>
@@ -85,28 +36,20 @@ export function AuthoritySection() {
         </FadeIn>
 
         <FadeIn delay={0.16}>
-          <div className="mx-auto max-w-2xl space-y-4 text-center md:max-w-3xl">
+          <div className="mx-auto max-w-2xl space-y-4 text-center md:max-w-4xl">
             {authority.paragraphs.map((paragraph) => {
               if (typeof paragraph === "object") {
                 return (
-                  <AuthorityFamiliesHighlight
+                  <HighlightLines
                     key={paragraph.lead}
-                    paragraph={paragraph}
+                    content={paragraph}
                   />
                 );
               }
 
-              const isDesktopNowrapParagraph = paragraph.startsWith(
-                "בשנים האחרונות בנינו",
-              );
-
               return (
                 <p key={paragraph.slice(0, 28)} className="sales-body text-black">
-                  {isDesktopNowrapParagraph ? (
-                    <span className="md:whitespace-nowrap">{paragraph}</span>
-                  ) : (
-                    paragraph
-                  )}
+                  {paragraph}
                 </p>
               );
             })}

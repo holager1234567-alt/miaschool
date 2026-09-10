@@ -10,7 +10,7 @@ export function WhyChoose() {
       <div className="container-page relative z-10 mx-auto max-w-3xl">
         <FadeIn className="mb-12 text-center md:mb-16">
           <h2 className="heading-section font-ploni font-extrabold text-pine">
-            למה לבחור בבית ספר של מיה?
+            למה לבחור במיה&apos;סקול?
           </h2>
         </FadeIn>
 

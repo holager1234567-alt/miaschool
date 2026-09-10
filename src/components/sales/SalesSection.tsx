@@ -27,7 +27,7 @@ export function SalesSection({
     <section
       id={id}
       className={cn(
-        "scroll-mt-20 overflow-x-clip px-6 py-14 md:py-20",
+        "scroll-mt-20 overflow-x-clip px-6 py-14 md:overflow-x-visible md:py-20",
         toneClasses[tone],
         className,
       )}

@@ -11,27 +11,20 @@ export function HookSection() {
         <div className="h-[88px] w-[120px] sm:h-[104px] sm:w-[140px]">
           <img
             src="/images/logo.png?v=4"
-            alt="מיה סקול"
+            alt="מיה'סקול"
             className="h-auto w-full object-contain object-top"
           />
         </div>
       </div>
 
       <h1 className="sales-h1 sales-h1-heavy mx-auto font-ploni font-extrabold text-pine">
-        {hook.h1Lines.map((line) => (
-          <span key={line} className="hero-h1-line">
-            {line}
-          </span>
-        ))}
+        <span className="block">{hook.h1Lead}</span>
+        <span className="mt-2 block text-turquoise">{hook.h1Accent}</span>
       </h1>
 
-      <div className="mx-auto mt-8 max-w-xl space-y-2">
-        {hook.subtitleLines.map((line) => (
-          <p key={line} className="sales-body text-muted">
-            {line}
-          </p>
-        ))}
-      </div>
+      <p className="sales-body mx-auto mt-8 max-w-xl text-muted">
+        {hook.subtitle}
+      </p>
 
       <div className="mt-10 flex flex-col items-center">
         <HeroCtaButton variant="hero-white" label={hook.cta} />

@@ -26,7 +26,7 @@ export function Footer() {
           </button>
         </nav>
         <p className="text-[12px] text-sage">
-          © {new Date().getFullYear()} מיה סקול
+          © {new Date().getFullYear()} כל הזכויות שמורות למיה&apos;סקול
         </p>
         <p className="flex flex-wrap items-center justify-center gap-2 text-[13px] text-black sm:text-[14px]">
           <span>דף זה נבנה באהבה על ידי</span>

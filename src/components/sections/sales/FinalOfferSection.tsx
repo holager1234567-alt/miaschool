@@ -1,7 +1,21 @@
-﻿import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
+﻿import { ArrowLeft, ArrowRight } from "lucide-react";
+import { HeroCtaButton } from "@/components/sections/HeroCtaButton";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SalesSection } from "@/components/sales/SalesSection";
 import { salesCopy } from "@/lib/content";
+
+function OfferCtaPointer({ side }: { side: "left" | "right" }) {
+  const Icon = side === "left" ? ArrowRight : ArrowLeft;
+
+  return (
+    <span
+      className={`offer-cta-arrow offer-cta-arrow--${side}`}
+      aria-hidden="true"
+    >
+      <Icon strokeWidth={2.5} />
+    </span>
+  );
+}
 
 export function FinalOfferSection() {
   const { offer } = salesCopy;
@@ -10,15 +24,12 @@ export function FinalOfferSection() {
     <SalesSection
       id="offer"
       tone="forest"
-      className="overflow-x-clip pt-4 pb-10 md:pt-6 md:pb-14"
+      className="overflow-x-clip pt-4 pb-10 md:overflow-x-visible md:pt-6 md:pb-14"
       innerClassName="text-center"
     >
       <FadeIn>
-        <h2 className="offer-title mx-auto w-full text-center font-ploni font-extrabold">
-          <span className="block whitespace-nowrap">{offer.h2Lines[0]}</span>
-          <span className="mt-1 block whitespace-nowrap sm:mt-1.5">
-            {offer.h2Lines[1]}
-          </span>
+        <h2 className="offer-title offer-title-line mx-auto w-full text-center font-ploni font-extrabold">
+          {offer.h2Lines[0]}
         </h2>
       </FadeIn>
 
@@ -28,8 +39,10 @@ export function FinalOfferSection() {
             if (typeof item === "object") {
               return (
                 <p key={item.lines[0]} className="offer-urgency-text">
-                  <span className="block">{item.lines[0]}</span>
-                  <span className="mt-1 block sm:mt-1.5">{item.lines[1]}</span>
+                  <span className="offer-urgency-line block">{item.lines[0]}</span>
+                  <span className="offer-urgency-line mt-1 block sm:mt-1.5">
+                    {item.lines[1]}
+                  </span>
                 </p>
               );
             }
@@ -44,7 +57,7 @@ export function FinalOfferSection() {
       </FadeIn>
 
       <FadeIn delay={0.16}>
-        <p className="offer-hook mx-auto mt-10 max-w-[22ch] font-ploni font-extrabold">
+        <p className="offer-hook highlight-brand-title mx-auto mt-10 max-w-3xl text-balance md:max-w-4xl">
           {offer.hook}
         </p>
       </FadeIn>
@@ -59,8 +72,18 @@ export function FinalOfferSection() {
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.32} className="mt-12 flex flex-col items-center">
-        <HeroCtaButton variant="hero-white" label={offer.cta} />
+      <FadeIn delay={0.32} className="mt-12 flex w-full flex-col items-center px-1 sm:px-0">
+        <div className="offer-cta-wrap">
+          <div className="offer-cta-inner">
+            <OfferCtaPointer side="left" />
+            <HeroCtaButton
+              variant="hero-white"
+              label={offer.cta}
+              className="offer-cta-button"
+            />
+            <OfferCtaPointer side="right" />
+          </div>
+        </div>
       </FadeIn>
     </SalesSection>
   );

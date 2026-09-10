@@ -35,7 +35,7 @@ export function TheMethod() {
           data-method-fade
           className="method-title heading-section font-ploni font-extrabold mx-auto mb-6 max-w-none sm:mb-8"
         >
-          <span className="method-title-accent block whitespace-nowrap text-[clamp(26px,6vw,44px)]">
+          <span className="method-title-accent block text-balance text-[clamp(26px,6vw,44px)]">
             השיטה המוצלחת שלנו
           </span>
           <span className="block text-[clamp(34px,7.5vw,54px)] leading-tight">
@@ -48,7 +48,7 @@ export function TheMethod() {
             <p
               key={paragraph}
               data-method-fade
-              className="text-base leading-relaxed text-[#3d5552] sm:text-lg sm:leading-[1.75]"
+              className="method-body-emphasis"
             >
               {paragraph}
             </p>

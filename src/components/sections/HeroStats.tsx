@@ -14,7 +14,7 @@ export function HeroStats() {
               className="absolute top-1 bottom-1 right-0 w-px bg-gradient-to-b from-transparent via-wood/45 to-transparent"
             />
           ) : null}
-          <p className="font-ploni font-extrabold text-[clamp(18px,4.2vw,32px)] font-bold leading-none text-pine">
+          <p className="font-ploni font-extrabold text-[clamp(18px,4.2vw,32px)] font-bold leading-none text-turquoise">
             {stat.value}
           </p>
           <p className="mt-2 text-[11px] leading-snug font-medium text-muted sm:text-[13px]">
