@@ -2,7 +2,7 @@ export const WHATSAPP_E164 =
   import.meta.env.VITE_WHATSAPP_NUMBER ?? "972542294626";
 
 export const WHATSAPP_PREFILL =
-  "שלום מיה 😊 הגעתי דרך הדף נחיתה ואשמח לשמוע פרטים נוספים";
+  "שלום מיה 😊 הגעתי דרך הדף נחיתה ואשמח לשמוע פרטים ולתאם שיחת היכרות";
 
 export function whatsappHref(text = WHATSAPP_PREFILL) {
   return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(text)}`;
