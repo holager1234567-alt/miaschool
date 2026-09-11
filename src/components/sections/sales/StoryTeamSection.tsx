@@ -53,7 +53,7 @@ export function StoryTeamSection() {
         </div>
       </FadeIn>
 
-      <FadeIn delay={0.24} className="mt-14 md:mt-16">
+      <FadeIn delay={0.08} className="mt-10 md:mt-12">
         <TeamTree />
         <div className="mx-auto mt-10 w-full max-w-4xl md:mt-12">
           <HighlightLines content={story.treeHighlights} />
