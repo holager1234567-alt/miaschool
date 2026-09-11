@@ -8,7 +8,7 @@ export function StoryTeamSection() {
   const { story } = salesCopy;
 
   return (
-    <SalesSection id="story" tone="sage" className="pt-4 pb-6 md:pt-5 md:pb-8" innerClassName="max-w-4xl">
+    <SalesSection id="story" tone="sage" className="pt-4 pb-6 md:pt-5 md:pb-8" innerClassName="max-w-4xl lg:max-w-6xl">
       <FadeIn>
         <h2 className="mx-auto max-w-full text-center font-ploni font-extrabold text-pine">
           <span className="story-title-lead block">{story.h2Lines[0]}</span>
