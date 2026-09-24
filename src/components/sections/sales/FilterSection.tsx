@@ -42,11 +42,10 @@ export function FilterSection() {
     >
       <FadeIn>
         <img
-          src="/images/plants-banner.png?v=1"
-          alt=""
-          aria-hidden="true"
+          src="/images/filter-kids-reading.jpg?v=2"
+          alt="ילדים קוראים יחד ספרים"
           draggable={false}
-          className="mx-auto mb-6 h-auto w-full max-w-[min(100%,22rem)] object-contain sm:mb-8 sm:max-w-[26rem] md:mb-5"
+          className="mx-auto mb-6 block h-auto w-full max-w-[min(100%,30rem)] object-contain sm:mb-8 sm:max-w-[34rem] md:mb-5"
         />
       </FadeIn>
 

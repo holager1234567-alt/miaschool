@@ -15,11 +15,10 @@ export function AuthoritySection() {
       <div className="container-page mx-auto max-w-6xl px-4 sm:px-6">
         <FadeIn>
           <img
-            src="/images/kids-reading.png?v=1"
-            alt=""
-            aria-hidden="true"
+            src="/images/learning-path.jpg?v=2"
+            alt="איור מסלול למידה עם דגל ביעד"
             draggable={false}
-            className="mx-auto mb-6 h-auto w-full max-w-[min(100%,20rem)] object-contain sm:mb-8 sm:max-w-[24rem]"
+            className="mx-auto mb-6 h-auto w-full max-w-[min(100%,16rem)] object-contain sm:mb-8 sm:max-w-[20rem]"
           />
         </FadeIn>
 
@@ -58,9 +57,9 @@ export function AuthoritySection() {
 
       </div>
 
-      <FadeIn delay={0.24} className="mt-10 w-full sm:mt-12">
+      <div className="mt-10 w-full sm:mt-12">
         <AuthorityTestimonials />
-      </FadeIn>
+      </div>
 
       <FadeIn delay={0.32} className="container-page mx-auto mt-10 flex justify-center px-4 sm:mt-14 sm:px-6">
         <HeroCtaButton variant="gold-glow" label={salesCopy.hook.cta} className="mx-auto" />

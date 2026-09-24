@@ -36,7 +36,9 @@ export function SchoolIntroLeadParagraph({
       )}
     >
       <span className={schoolIntroLeadOpeningClass}>
-        מיה&apos;סקול נולד מתוך שליחות עמוקה
+        מיה&apos;סקול
+        <br className="sm:hidden" />
+        נולד מתוך שליחות עמוקה
       </span>
       <span className={schoolIntroLeadRestClass}>
         לאפשר לכל תלמידה ותלמיד לרכוש{" "}
@@ -47,7 +49,9 @@ export function SchoolIntroLeadParagraph({
   ) : (
     <>
       <span className={schoolIntroLeadFirstLineDefaultClass}>
-        מיה&apos;סקול נולד מתוך שליחות עמוקה
+        מיה&apos;סקול
+        <br className="sm:hidden" />
+        נולד מתוך שליחות עמוקה
       </span>{" "}
       לאפשר לכל תלמידה ותלמיד לרכוש{" "}
       <br className="sm:hidden" />

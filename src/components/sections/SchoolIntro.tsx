@@ -35,10 +35,10 @@ export function SchoolIntro() {
     <section ref={ref} className="-mt-1 bg-transparent px-4 pt-0 pb-4 text-black sm:px-6 sm:pb-5 md:pb-6">
       <div className="container-page mx-auto max-w-3xl text-center md:max-w-none">
         <div data-school-intro-fade>
-          <HeroLogo />
+          <HeroLogo variant="intro" />
         </div>
 
-        <div className="mx-auto mt-2 max-w-[42rem] space-y-4 sm:space-y-5 md:max-w-none">
+        <div className="mx-auto mt-2.5 max-w-[42rem] space-y-3 sm:mt-3 sm:space-y-4 md:max-w-none">
           <SchoolIntroLeadParagraph
             data-school-intro-fade
             className="text-base leading-relaxed text-black sm:text-lg sm:leading-[1.75]"

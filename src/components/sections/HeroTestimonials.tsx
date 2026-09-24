@@ -4,10 +4,6 @@ import { TestimonialsMarquee } from "./TestimonialsMarquee";
 
 export function HeroTestimonials() {
   return (
-    <TestimonialsMarquee
-      items={heroTestimonials}
-      className="data-hero-fade"
-      tall
-    />
+    <TestimonialsMarquee items={heroTestimonials} fillViewport tall />
   );
 }

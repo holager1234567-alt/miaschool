@@ -49,9 +49,8 @@ function ValueCurveArrow({ placement }: { placement: "start" | "end" }) {
 
 function ValueTitle({ lines }: { lines: readonly [string, string] }) {
   return (
-    <h2 className="value-section-title z-10 mx-auto w-full max-w-3xl shrink-0 text-center font-ploni font-extrabold md:max-w-none">
-      <span>{lines[0]}</span>{" "}
-      <span>{lines[1]}</span>
+    <h2 className="value-section-title z-10 mx-auto w-full max-w-none shrink-0 px-1 text-center font-ploni font-extrabold">
+      {lines[0]} {lines[1]}
     </h2>
   );
 }

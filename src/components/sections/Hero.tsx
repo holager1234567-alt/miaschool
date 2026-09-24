@@ -39,9 +39,9 @@ export function Hero() {
         </FadeIn>
       </div>
 
-      <FadeIn delay={0.24} className="relative z-20 mt-6 w-full sm:mt-8">
+      <div className="relative z-20 mt-6 w-full sm:mt-8 md:mt-8">
         <HeroTestimonials />
-      </FadeIn>
+      </div>
     </section>
   );
 }

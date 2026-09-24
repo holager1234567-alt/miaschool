@@ -1,17 +1,20 @@
 ﻿type HeroLogoProps = {
-  variant?: "logo" | "brand" | "hero";
+  variant?: "logo" | "brand" | "hero" | "intro";
 };
 
 export function HeroLogo({ variant = "logo" }: HeroLogoProps) {
   const isHero = variant === "hero";
   const isBrand = variant === "brand";
+  const isIntro = variant === "intro";
 
   return (
     <div
       className={
         isHero
           ? "mb-10 flex flex-col items-center sm:mb-9 md:mb-10"
-          : "mb-4 flex flex-col items-center sm:mb-5"
+          : isIntro
+            ? "mb-0 flex flex-col items-center"
+            : "mb-4 flex flex-col items-center sm:mb-5"
       }
       aria-label="מיה'סקול"
     >
@@ -30,13 +33,15 @@ export function HeroLogo({ variant = "logo" }: HeroLogoProps) {
               ? "/images/logo.png?v=5"
               : isBrand
                 ? "/images/logo.png?v=5"
-                : "/images/hero-kids-abc.png?v=1"
+                : "/images/hero-kids-abc.jpg?v=4"
           }
           alt={isHero || isBrand ? "מיה'סקול" : "ילדים מחזיקים את האותיות ABC"}
           className={
             isHero || isBrand
               ? "mx-auto h-auto w-full object-contain object-top"
-              : "mx-auto h-auto w-[min(100%,250px)] object-contain sm:w-[min(100%,310px)] md:w-[min(100%,300px)] lg:w-[min(100%,280px)]"
+              : isIntro
+                ? "mx-auto h-auto w-[min(100%,300px)] object-contain object-top sm:w-[min(100%,400px)] md:w-[min(100%,380px)]"
+                : "mx-auto h-auto w-[min(100%,250px)] object-contain sm:w-[min(100%,310px)] md:w-[min(100%,300px)] lg:w-[min(100%,280px)]"
           }
         />
       </div>
