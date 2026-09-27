@@ -36,9 +36,10 @@ export function SchoolIntroLeadParagraph({
       )}
     >
       <span className={schoolIntroLeadOpeningClass}>
-        מיה&apos;סקול
-        <br className="sm:hidden" />
-        נולד מתוך שליחות עמוקה
+        <span className="block sm:inline">מיה&apos;סקול</span>{" "}
+        <span className="mt-3 block sm:mt-0 sm:inline">
+          נולד מתוך שליחות עמוקה
+        </span>
       </span>
       <span className={schoolIntroLeadRestClass}>
         לאפשר לכל תלמידה ותלמיד לרכוש{" "}
